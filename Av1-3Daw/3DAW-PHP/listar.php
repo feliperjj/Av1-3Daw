@@ -51,6 +51,7 @@ if (isset($_POST["botaoExib"])) {
         <a class="nav-link" href="alterar.php">Alterar </a>
         <a class="nav-link" href="listar.php">Listar</a>
         <a class="nav-link" href="deletar.php">Excluir</a>
+        <a class="nav-link" href="createtxt.php">Usuario</a>
       </div>
     </div>
   </div>
