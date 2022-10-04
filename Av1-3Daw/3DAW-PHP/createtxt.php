@@ -30,18 +30,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $arquivo = fopen('Usuario.txt', 'r'); 
 
-    while (!feof($arquivo)) {
-        $data = explode('|', fgets($arquivo));
-        $query = "INSERT INTO users (nome, email, senha, tipo) VALUES ('".implode("', '", $data)."');";
-
-        $executa = mysqli_query($conexao, $query);
-
-        if ($executa) {
-            echo 'DADOS INSERIDOS COM SUCESSO';
-        } else {
-            echo 'OCORREU UM ERRO!';
-        }
-    }
+while (!feof($arquivo)) {
+    $data = explode('|', fgets($arquivo));
+    $query = "INSERT INTO users (nome, email, senha, tipo) VALUES ('".implode("', '", $data)."');";
+}
 }
 
 ?>
@@ -55,9 +47,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <title>Index</title>
 </head>
 <body>
+
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="index.php">Disciplinas</a>
+    <a class="navbar-brand" href="index.php">Usuarios</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -72,7 +65,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     </div>
   </div>
 </nav>
-
+<h1>Usuarios</h1>
 <form action="createtxt.php"  class="row g-3" method="POST">
         <div class="mb-3">
       
