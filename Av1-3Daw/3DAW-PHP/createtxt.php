@@ -1,36 +1,49 @@
 <?php
 include("server.php");
 $ehPost = true;
-if ($_SERVER["REQUEST_METHOD"] == "POST"){
-    $nome = $_POST ["nome"]; 
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nome = $_POST ["nome"];
     $email= $_POST["email"];
-    $senha = $_POST ["senha"]; 
+    $senha = $_POST ["senha"];
     $tipo= $_POST["tipo"];
-    if($nome == NULL  || $email== NULL || $senha == NULL || $tipo == NULL)
-    {
+    if ($nome == null  || $email== null || $senha == null || $tipo == null) {
         echo "Nao foi <br>";
-    }
-    else if(!file_exists("Usuario.txt")) {
-       $arquivo = fopen ("Usuario.txt", "w");
-       $cabecalho = "nome;email;senha;tipo \n";
+    } elseif (!file_exists("Usuario.txt")) {
+        $arquivo = fopen("Usuario.txt", "w");
+        $cabecalho = "nome;email;senha;tipo \n";
 
-       fwrite($arquivo, $cabecalho);
-    
-       $linha = ($nome.";".$email.";".$senha.";".$tipo.";\n");
-       fwrite($arquivo, $linha);
+        fwrite($arquivo, $cabecalho);
 
-       fclose($arquivo);
+        $linha = ($nome.";".$email.";".$senha.";".$tipo.";\n");
+        fwrite($arquivo, $linha);
 
-    }
-    else {
-        $arquivo = fopen ("Usuario.txt", "a");
+        fclose($arquivo);
+    } else {
+        $arquivo = fopen("Usuario.txt", "a");
 
         $linha = ($nome.";".$email.";".$senha.";".$tipo.";\n");
         fwrite($arquivo, $linha);
 
         fclose($arquivo);
     }
+
+
+    $arquivo = fopen('Usuario.txt', 'r'); 
+
+    while (!feof($arquivo)) {
+        $data = explode('|', fgets($arquivo));
+        $query = "INSERT INTO users (nome, email, senha, tipo) VALUES ('".implode("', '", $data)."');";
+
+        $executa = mysqli_query($conexao, $query);
+
+        if ($executa) {
+            echo 'DADOS INSERIDOS COM SUCESSO';
+        } else {
+            echo 'OCORREU UM ERRO!';
+        }
+    }
 }
+
 ?>
 <!DOCTYPE html>
 <meta charset="UTF-8">
