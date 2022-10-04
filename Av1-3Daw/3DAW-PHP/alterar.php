@@ -2,7 +2,8 @@
 include("server.php");
 $bolAlt = false;
 if (isset($_POST["botaoAlt"])) {
-    $nome = $_POST["nome"];
+  $nome = $_POST["nome"];  
+    $nomeA = $_POST["nomeA"];
     $periodo = $_POST["periodo"];
     $idpre = $_POST["idpre"];
     $credito = $_POST["credito"];
@@ -13,7 +14,7 @@ if (isset($_POST["botaoAlt"])) {
     `idpre`='{$idpre}',
     `credito`='{$credito}'
     WHERE
-    nome=".$_REQUEST["nome"];
+    nome=".$_REQUEST["nomeA"];
         
     
         
@@ -68,8 +69,8 @@ if (isset($_POST["botaoAlt"])) {
 
     
    
-        <label for="nome" class="form-label">Disciplina</label>
-        <input type="text" name="nome" placeholder="Disciplina a ser alterada" class="form-control"><br>
+        <label for="nomeA" class="form-label">Disciplina</label>
+        <input type="text" name="nomeA" placeholder="Disciplina a ser alterada" class="form-control"><br>
 
 
 
