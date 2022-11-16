@@ -37,8 +37,9 @@ if (isset($_POST["botaoExib"])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <title>Index</title>
+   
 </head>
-<body>
+<body onload="carregaAlunos();">
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php">Disciplinas</a>
@@ -57,59 +58,15 @@ if (isset($_POST["botaoExib"])) {
   </div>
 </nav>
 
-        <div class="mb-3">
-            <h1>Exibir</h1>
-            <form action="listar.php" method="POST">
-                <input class="form-control" type="text" name="nome" placeholder="Disciplina a ser buscada">
-                <input name="botaoExib"  class="btn btn-primary" type="submit" value="Exibir 1"><br>
-                <?php
-                if (isset($_POST["botaoExib"])) {
-                    if ($boolTest == true) {
-                        echo "<table>
-                <tr>
-                    <td>$printM</td>
-                    <td>$printN</td>
-                    <td>$printE</td>
-                </tr>
-            </table>";
-                    }
-                }
-
-
-                ?>
-                <p>OU</p>
-                <input name="botaoExibTds" class="btn btn-primary" type="submit" value="Exibir Todos"><br>
-
-
-            </form>
-            <table class="table"></table> 
-                <thead>
-                    <tr>
-                        <th scope="col">Nome</th>
-                        <th scope="col">Disciplina</th>
-                        <th scope="col">Creditos</th><br>
-                    </tr>
-                </thead>
-                <tbody>
-             <?php       
-            if (isset($_POST["botaoExibTds"])) {
-                $sqlExibTds = "SELECT `nome`, `periodo`, `credito` FROM `disciplina`";
-
-                if (!$conn->query($sqlExibTds)) {
-                    echo ("Error description: " . $conn->error);
-                }
-                if ($result = mysqli_query($conn, $sqlExibTds)) {
-                    while ($row = mysqli_fetch_row($result)) {
-
-                        echo  "<tr><td > $row[0]</td> <br>";
-                        echo  "<td> $row[1]</td> <br>";
-                        echo  "<td> $row[2]</td></tr> <br>";
-                    }
-                }
-            }
-                        ?>
-                </tbody>
-            <a href="index.php">Voltar</a>
-
-            </body>
-        </html>
+    <table id="tab" style="border:1px solid">
+        <tr style="border:1px solid">
+            <th style="border:1px solid">Disciplina</th>
+            <th style="border:1px solid">Período</th>
+            <th style="border:1px solid">Idpre</th>
+            <th style="border:1px solid">Credito</th>
+        </tr>
+    </table>
+    <p id="msg">
+    </p>
+</body>
+</html>

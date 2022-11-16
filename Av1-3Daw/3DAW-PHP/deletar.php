@@ -26,7 +26,7 @@ if (isset($_POST["botaoDel"])) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <title>Index</title>
 </head>
-<body>
+<body onload="excluir();">
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php">Disciplinas</a>
@@ -50,8 +50,8 @@ if (isset($_POST["botaoDel"])) {
             
                 <label for="delByNome">Disciplina: </label>
                 <input type="text" class = "form-row" name="nome" placeholder="Disciplina a ser deletada"><br>
-                <input name="botaoDel" class="btn-primary" type="submit" value="Apagar">
-                <?php if($bolDel == true){ echo("<p style=\"margin-top: 0px;\">Disciplina Apagada!</p>");} ?>
+                <input type = "button" name = "envio" value="Enviar" 
+            onclick="excluir();">
             </form>
             <a href="index.php">Voltar</a>
         </div>

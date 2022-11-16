@@ -44,7 +44,7 @@ if (isset($_POST["botaoAlt"])) {
 
 </head>
 
-<body>
+<body onload="enviarFormAlt();">
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.php">Disciplina</a>
@@ -70,31 +70,28 @@ if (isset($_POST["botaoAlt"])) {
     
    
         <label for="nomeA" class="form-label">Disciplina</label>
-        <input type="text" name="nomeA" placeholder="Disciplina a ser alterada" class="form-control"><br>
+        <input type="text" id ="nome" name="nomeA" placeholder="Disciplina a ser alterada" class="form-control"><br>
 
 
 
 
         <label for="nome" class="form-label">Disciplina [Alteração Obrigatória]:</label>
-        <input type="text" class="form-control" name="nome" placeholder="Novo nome da Disciplina"><br>
+        <input type="text" id="nomeAlt" class="form-control" name="nome" placeholder="Novo nome da Disciplina"><br>
 
         <label for="periodo" class="form-label">Período [Alteração Obrigatória]:</label>
-        <input type="periodo" class="form-control" name="periodo" placeholder="Altere o Periodo"><br>
+        <input type="periodo" id="periodoAlt" class="form-control" name="periodo" placeholder="Altere o Periodo"><br>
         
         <label for="idpre" class="form-label">Idpre [Alteração Obrigatória]:</label>
-        <input type="idpre" class="form-control" name="idpre" placeholder="Id de pré Requisito"><br>
+        <input type="idpre"   id="idpreAlt" class="form-control" name="idpre" placeholder="Id de pré Requisito"><br>
         
         <label for="credito" class="form-label">Credito [Alteração Obrigatória]:</label>
-        <input type="credito" class="form-control" name="credito" placeholder="Novo credito"><br>
+        <input type="credito"  id="creditoAlt" class="form-control" name="credito" placeholder="Novo credito"><br>
         
         
         
         
-
-        <input name="botaoAlt" class="botao" type="submit" value="Alterar">
-        <?php if ($bolAlt == true) {
-            echo ("<p style=\"margin-top: 0px;\">Disciplina Alterado!</p>");
-        } ?>
+        <input type = "button" name = "envio" value="Enviar" 
+            onclick="buscarDisciplina();">
         </form>
         </div>
 
