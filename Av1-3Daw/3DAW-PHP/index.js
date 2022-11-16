@@ -19,7 +19,7 @@ function enviarForm() { //(pNome, pMat, pEmail, pCpf) {
     console.log("Enviei requisição");
 }
 
-function enviarFormAlt() { //(pNome, pMat, pEmail, pCpf) {
+function enviarFormAlt() { 
     let pNome = document.getElementById("nome").value;
     let pPeriodo = document.getElementById("periodo").value;
     let pIdPre = document.getElementById("idpre").value;
@@ -44,8 +44,7 @@ function carregaAlunos() {
         xmlHttp.onreadystatechange = function() {
             console.log("mudou status: " + this.readyState);
             if (this.readyState == 4 && this.status == 200) {
-            //    console.log("Chegou resposta: " + this.responseText)
-            //    document.getElementById("msg").innerHTML = this.responseText;
+          
                 let obj = JSON.parse(this.responseText);
                 let x = 0;
                 for (x=0;x<obj.length;x++) {
@@ -83,13 +82,11 @@ function criarLinhaTabela(pobjReturnJSON) {
     tr.appendChild(td3); // adiciona a td na tr
 
     let td4 = document.createElement("td"); // cria o element td
-//           let txtLink = "a href='ex12_alterarAluno.php?mat=" + pobjReturnJSON.matricula + "'Alterar";
-//           let txtLink2 = document.createElement("a");
+
     let tagA = document.createElement("a", "href");
-//            let txtLink = document.createAttribute(href);
-//           let textnode1 = document.createTextNode("ex12_alterarAluno.php?mat=" + pobjReturnJSON.matricula);
+
 let textnode1 = "ex12_alterar.php?mat=" + pobjReturnJSON.matricula;
-    //txtLink.setAttributeNS(textnode1);
+   
     tagA.setAttribute("href",textnode1);
     textnode1 = document.createTextNode("Alterar");
     tagA.appendChild(textnode);
@@ -99,17 +96,14 @@ let textnode1 = "ex12_alterar.php?mat=" + pobjReturnJSON.matricula;
 
     tb.appendChild(tr);
 
-    // let tr_fim = document.getElementById("ultimaLinha"); // pega a tr pelo id
-    // // adiciona o elemento criado, a partir do nó pai (no caso <table>)
-    // tr_fim.parentNode.insertBefore(tr, tr_fim);
+   
 }
 function buscarDisciplina(nome) {
     let xmlHttp = new XMLHttpRequest();
     xmlHttp.onreadystatechange = function() {
         console.log("mudou status: " + this.readyState);
         if (this.readyState == 4 && this.status == 200) {
-            //    console.log("Chegou resposta: " + this.responseText)
-            //    document.getElementById("msg").innerHTML = this.responseText;
+         
             let obj = JSON.parse(this.responseText);
             document.getElementById("nomeAlt").value = obj.nome;
             document.getElementById("periodoAlt").value = obj.periodo;
